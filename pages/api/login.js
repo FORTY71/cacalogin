@@ -1,17 +1,16 @@
 export default function handler(req, res) {
-  // Hanya menerima request POST
-  if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
-  }
+  // Kita ambil key dari Body (kalau via Aplikasi/POST) ATAU dari URL (kalau via Chrome/GET)
+  const key = req.body.key || req.query.key;
 
-  const { key } = req.body;
-
-  // 1. Cek Key (Hardcode langsung di sini)
+  // Cek Key
   if (key !== 'GHOST-VIP-KEY') {
-    return res.status(401).json({ status: 'failed', message: 'Key salah atau expired' });
+    return res.status(401).json({ 
+      status: 'failed', 
+      message: 'Key salah. Jika buka di browser, gunakan format URL: /api/login?key=GHOST-VIP-KEY' 
+    });
   }
 
-  // 2. Output JSON persis seperti format aslimu
+  // Output JSON murni statis
   const responseJson = {
     "access": "∞",
     "credit": "30",
@@ -37,7 +36,6 @@ export default function handler(req, res) {
         "name": "25028PC03G",
         "registered_at": "23-06-2026 16:37"
       }
-      // Kamu bisa tambahkan list device lainnya di sini jika perlu
     },
     "rgtime": "23-06-2026 13:49",
     "status": "active",
@@ -45,6 +43,5 @@ export default function handler(req, res) {
     "validity": "24-06-2026 13:49"
   };
 
-  // 3. Kirim JSON ke aplikasi
   return res.status(200).json(responseJson);
 }
