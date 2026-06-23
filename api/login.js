@@ -3,10 +3,10 @@ export default function handler(req, res) {
   const key = (req.body && req.body.key) || req.query.key;
 
   // Cek Key
-  if (key !== 'GHOST-VIP-KEY') {
+  if (key !== 'pradaxca') {
     return res.status(401).json({ 
       status: 'failed', 
-      message: 'Key salah. Jika buka di browser, gunakan format URL: /api/login?key=GHOST-VIP-KEY' 
+      message: 'Key salah. Jika buka di browser, gunakan format URL: /api/login?key=pradaxca' 
     });
   }
 
