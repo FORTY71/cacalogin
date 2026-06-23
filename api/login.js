@@ -37,10 +37,10 @@ export default function handler(req, res) {
         "registered_at": "23-06-2026 16:37"
       }
     },
-    "rgtime": "23-06-2026 13:49",
+    "rgtime": "23-06-2046 13:49",
     "status": "active",
-    "username": "GHOST",
-    "validity": "24-06-2026 13:49"
+    "username": "pradaxca",
+    "validity": "24-06-2046 13:49"
   };
 
   // Kirim response
